@@ -1,67 +1,41 @@
 //Recorrer y mostrar elementos de todos los arreglos de objetos aplicando 3 instrucciones de repetición distintas
-const { Paciente, TipoExamen, Resultado } = require('./arreglos')
-
-
-//// Recorrido con While
-const estructuraWhile = () =>{
-    console.log('Recorrido con While');
-    let iterador= 0
-    console.log('Pacientes');
-    while( iterador< Paciente.length){
-        console.log(Paciente[iterador]);
-        iterador++;
-    }
-
-    console.log('\nTipo de Examen');
-    iterador= 0;
-    while( iterador< TipoExamen.length){
-        console.log(TipoExamen[iterador]);
-        iterador++;
-    }
-
-    console.log('\nResultado de Examen');
-    iterador= 0;
-    while( iterador< Resultado.length){
-        console.log(Resultado[iterador]);
-        iterador++;
-    }
-}
-
-
-//// Recorrido con for of
-const estructuraForOf = () =>{
-    console.log('Recorrido con For Of');
-    console.log('Pacientes');
-    for( let Pacientes of Paciente) console.log(Pacientes);
-
-    console.log('\nTipo de Examen');
-    for( let Tipos of TipoExamen) console.log(Tipos);
-
-    console.log('\nResultado de Examen');
-    for( let Resultados of Resultado) console.log(Resultados);
-}
-
+const { Pacientes, TiposExamen, ResultadosExamen } = require('./arreglos');
 
 // Recorrido con for
-const estructuraForLoop = () =>{
-        console.log('Recorrido con for');
-        console.log('Pacientes');
-        for(let iterador = 0; iterador< Paciente.length; iterador++){
-            console.log(Paciente[iterador]);
-        }
-
-
-        console.log('\nTipo de Examen');
-        for(let iterador = 0; iterador< TipoExamen.length; iterador++){
-            console.log(TipoExamen[iterador]);
-        }
- 
-
-        console.log('\nResultado de Examen');
-        for(let iterador = 0; iterador< Resultado.length; iterador++){
-            console.log(Resultado[iterador]);
-        };
+console.log('Recorrido con for');
+for (let i = 0; i < Pacientes.length; i++) {
+  console.log(Pacientes[i]);
 }
-estructuraWhile();
-estructuraForOf();
-estructuraForLoop();
+
+for (let i = 0; i < TiposExamen.length; i++) {
+  console.log(TiposExamen[i]);
+}
+
+for (let i = 0; i < ResultadosExamen.length; i++) {
+  console.log(ResultadosExamen[i]);
+}
+
+// Recorrido con forEach
+console.log('Recorrido con forEach');
+Pacientes.forEach(paciente => {
+  console.log(paciente);
+});
+
+TiposExamen.forEach(tipoExamen => {
+  console.log(tipoExamen);
+});
+
+ResultadosExamen.forEach(resultadoExamen => {
+  console.log(resultadoExamen);
+});
+
+// Recorrido con map
+console.log('Recorrido con map');
+const pacientesNombres = Pacientes.map(paciente => paciente.nombre);
+console.log(pacientesNombres);
+
+const tiposExamenDescripciones = TiposExamen.map(tipoExamen => tipoExamen.descripcion);
+console.log(tiposExamenDescripciones);
+
+const resultadosExamenesResultados = ResultadosExamen.map(resultadoExamen => resultadoExamen.resultado);
+console.log(resultadosExamenesResultados);
