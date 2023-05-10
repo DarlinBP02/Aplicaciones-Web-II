@@ -58,6 +58,72 @@ let pacientes = [];
   
     res.send(`El paciente con ID ${req.params.id} ha sido eliminado.`);
   });
- 
+
+  
+  // Definir lista de tipos de examen
+  let tiposExamen = [];
+  
+  // Obtener lista de tipos de examen
+  app.get('/tipos-examen', (req, res) => {
+    res.send(tiposExamen);
+  });
+  
+  // Obtener tipo de examen por ID
+  app.get('/tipos-examen/:id', (req, res) => {
+    const tipoExamen = tiposExamen.find(te => te.id === parseInt(req.params.id));
+    if (!tipoExamen) return res.status(404).send('Tipo de examen no encontrado.');
+  
+    res.send(tipoExamen);
+  });
+  
+  // Crear nuevo tipo de examen
+  app.post('/tipos-examen', (req, res) => {
+    const tipoExamen = {
+      id: tiposExamen.length + 1,
+      descripcion: req.body.descripcion,
+      indicaciones: req.body.indicaciones
+    };
+    tiposExamen.push(tipoExamen);
+  
+    res.send(tipoExamen);
+  });
+  
+  // Actualizar tipo de examen por ID
+  app.put('/tipos-examen/:id', (req, res) => {
+    const tipoExamen = tiposExamen.find(te => te.id === parseInt(req.params.id));
+    if (!tipoExamen) return res.status(404).send('Tipo de examen no encontrado.');
+  
+    tipoExamen.descripcion = req.body.descripcion;
+    tipoExamen.indicaciones = req.body.indicaciones;
+  
+    res.send(tipoExamen);
+  });
+  
+  // Actualizar parcialmente tipo de examen por ID
+  app.patch('/tipos-examen/:id', (req, res) => {
+    const tipoExamen = tiposExamen.find(te => te.id === parseInt(req.params.id));
+    if (!tipoExamen) return res.status(404).send('Tipo de examen no encontrado.');
+  
+    if (req.body.descripcion) {
+      tipoExamen.descripcion = req.body.descripcion;
+    }
+    if (req.body.indicaciones) {
+      tipoExamen.indicaciones = req.body.indicaciones;
+    }
+  
+    res.send(tipoExamen);
+  });
+  
+  // Eliminar tipo de examen por ID
+  app.delete('/tipos-examen/:id', (req, res) => {
+    const tipoExamen = tiposExamen.find(te => te.id === parseInt(req.params.id));
+    if (!tipoExamen) return res.status(404).send('Tipo de examen no encontrado.');
+  
+    const index = tiposExamen.indexOf(tipoExamen);
+    tiposExamen.splice(index, 1);
+  
+    res.send(`El tipo de examen con ID ${req.params.id} ha sido eliminado.`);
+  });
+  
 
 
