@@ -59,7 +59,7 @@ let pacientes = [];
     res.send(`El paciente con ID ${req.params.id} ha sido eliminado.`);
   });
 
-  
+
   // Definir lista de tipos de examen
   let tiposExamen = [];
   
@@ -125,5 +125,85 @@ let pacientes = [];
     res.send(`El tipo de examen con ID ${req.params.id} ha sido eliminado.`);
   });
   
+  // Definir lista de resultados
+let resultados = [];
+
+// Obtener lista de resultados
+app.get('/resultados', (req, res) => {
+  res.send(resultados);
+});
+
+// Obtener resultado por ID
+app.get('/resultados/:id', (req, res) => {
+  const resultado = resultados.find(r => r.id === parseInt(req.params.id));
+  if (!resultado) return res.status(404).send('Resultado no encontrado.');
+
+  res.send(resultado);
+});
+
+// Crear nuevo resultado
+app.post('/resultados', (req, res) => {
+  const resultado = {
+    id: resultados.length + 1,
+    idPaciente: req.body.idPaciente,
+    idTipoExamen: req.body.idTipoExamen,
+    resultadoExamen: req.body.resultadoExamen,
+    valorPagado: req.body.valorPagado,
+    observaciones: req.body.observaciones
+  };
+  resultados.push(resultado);
+
+  res.send(resultado);
+});
+
+// Actualizar resultado por ID
+app.put('/resultados/:id', (req, res) => {
+  const resultado = resultados.find(r => r.id === parseInt(req.params.id));
+  if (!resultado) return res.status(404).send('Resultado no encontrado.');
+
+  resultado.idPaciente = req.body.idPaciente;
+  resultado.idTipoExamen = req.body.idTipoExamen;
+  resultado.resultadoExamen = req.body.resultadoExamen;
+  resultado.valorPagado = req.body.valorPagado;
+  resultado.observaciones = req.body.observaciones;
+
+  res.send(resultado);
+});
+
+// Actualizar parcialmente resultado por ID
+app.patch('/resultados/:id', (req, res) => {
+  const resultado = resultados.find(r => r.id === parseInt(req.params.id));
+  if (!resultado) return res.status(404).send('Resultado no encontrado.');
+
+  if (req.body.idPaciente) {
+    resultado.idPaciente = req.body.idPaciente;
+  }
+  if (req.body.idTipoExamen) {
+    resultado.idTipoExamen = req.body.idTipoExamen;
+  }
+  if (req.body.resultadoExamen) {
+    resultado.resultadoExamen = req.body.resultadoExamen;
+  }
+  if (req.body.valorPagado) {
+    resultado.valorPagado = req.body.valorPagado;
+  }
+  if (req.body.observaciones) {
+    resultado.observaciones = req.body.observaciones;
+  }
+
+  res.send(resultado);
+});
+
+// Eliminar resultado por ID
+app.delete('/resultados/:id', (req, res) => {
+  const resultado = resultados.find(r => r.id === parseInt(req.params.id));
+  if (!resultado) return res.status(404).send('Resultado no encontrado.');
+
+  const index = resultados.indexOf(resultado);
+  resultados.splice(index, 1);
+
+  res.send(`El resultado con ID ${req.params.id} ha sido eliminado.`);
+});
+
 
 
