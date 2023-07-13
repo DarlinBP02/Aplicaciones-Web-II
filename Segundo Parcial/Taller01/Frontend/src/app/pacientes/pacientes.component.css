@@ -1,0 +1,67 @@
+div {
+    margin: 20px;
+  }
+  
+  h2 {
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  #form {
+    background-color: #ccefe1;
+    padding: 10px;
+    border-radius: 10px; 
+    margin-bottom: 20px;
+    width: 60%; 
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    width: 60%;
+    margin: 0 auto; 
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  textarea {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #555;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  th, td {
+    padding: 5px;
+    border: 1px solid #333;
+  }
+  
+  th {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
