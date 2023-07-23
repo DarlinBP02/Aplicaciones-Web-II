@@ -1,0 +1,58 @@
+<div>
+    <h2>Formulario de Resultados</h2>
+    <div id="form">
+        <div >
+            <label for="pacientes">Paciente:</label>
+            <input type="text" id="pacientes" [(ngModel)]="pacientes">
+          </div>
+        
+          <div>
+            <label for="examen">Examen:</label>
+            <input type="text" id="examen" [(ngModel)]="examen">
+          </div>
+        
+          <div>
+            <label for="resultadoExamen">Resultado del Examen:</label>
+            <input type="text" id="resultadoExamen" [(ngModel)]="resultadoExamen">
+          </div>
+        
+          <div>
+            <label for="valorPagado">Valor Pagado:</label>
+            <input type="number" id="valorPagado" [(ngModel)]="valorPagado">
+          </div>
+        
+          <div>
+            <label for="observaciones">Observaciones:</label>
+            <textarea id="observaciones" [(ngModel)]="observaciones"></textarea>
+          </div>
+        
+          <div>
+            <button (click)="guardarResultado()">Guardar</button>
+            <button (click)="limpiarFormulario()">Limpiar</button>
+          </div>
+    </div>
+   
+  
+    <h2>Lista de Resultados</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Paciente</th>
+          <th>Examen</th>
+          <th>Resultado</th>
+          <th>Valor Pagado</th>
+          <th>Observaciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let resultado of resultados">
+          <td>{{ resultado.pacientes }}</td>
+          <td>{{ resultado.examen }}</td>
+          <td>{{ resultado.ResultadoExamen }}</td>
+          <td>{{ resultado.ValorPagado }}</td>
+          <td>{{ resultado.Observaciones }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
