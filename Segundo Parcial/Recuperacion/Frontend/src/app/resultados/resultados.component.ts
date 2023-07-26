@@ -156,7 +156,7 @@ export class ResultadosComponent implements OnInit {
       .subscribe(
         (response: any) => {
           console.log('Resultado restaurado exitosamente');
-          this.obtenerResultados(); 
+          this.obtenerResultados(); // Actualizar la lista de resultados después de restaurar
         },
         error => {
           console.error('Error al restaurar el resultado', error);

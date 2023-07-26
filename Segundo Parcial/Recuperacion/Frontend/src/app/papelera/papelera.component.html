@@ -1,0 +1,19 @@
+<div>  
+    <h2>Papelera</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Entidad</th>
+          <th>Datos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let papelera of papeleras">
+          <td>{{ papelera.entidad }}</td>
+          <td>{{ papelera.datos }}</td>
+
+ 
+        </tr>
+      </tbody>
+    </table>
+  </div>

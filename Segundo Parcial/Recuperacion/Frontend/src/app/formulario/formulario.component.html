@@ -1,0 +1,35 @@
+<h2>Crear Examen</h2>
+
+<form id="form" (ngSubmit)="guardarExamen()">
+  <label>
+    Descripción:
+    <input type="text" [(ngModel)]="descripcion" name="descripcion" required>
+  </label>
+  <label>
+    Indicaciones:
+    <input type="text" [(ngModel)]="indicaciones" name="indicaciones" required>
+  </label>
+  <label>
+    Resultados:
+    <input type="text" [(ngModel)]="resultados" name="resultados" required>
+  </label>
+  <button type="submit">Guardar</button>
+</form>
+
+<h2>Lista de Exámenes</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Descripción</th>
+      <th>Indicaciones</th>
+      <th>Resultados</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let examen of examenes">
+      <td>{{ examen.descripcion }}</td>
+      <td>{{ examen.indicaciones }}</td>
+      <td>{{ examen.resultados }}</td>
+    </tr>
+  </tbody>
+</table>

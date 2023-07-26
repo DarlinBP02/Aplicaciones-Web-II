@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
+  
 
 const {
   createResultado,
@@ -19,9 +20,7 @@ const { validateFields } = require('../middlewares');
 const router = Router();
 
 // Nuevas rutas
-router.get('/activos', getResultadosActivos);
-router.get('/eliminados', getResultadosEliminados);
-router.get('/ambos', getResultadosAmbos);
+
 
 router.get('/', getResultados);
 
@@ -44,11 +43,7 @@ router.post(
 
 router.put('/:id', [check('id', 'Debe ser un id de mongo VALIDO').isMongoId(), validateFields], updateResultado);
 
-router.put(
-  '/restore/:id',
-  [check('id', 'Este no es un ID de Mongo correcto').isMongoId(), validateFields],
-  restoreResultado
-);
+
 
 router.delete('/:id', [check('id', 'Debe ser un id de mongo VALIDO').isMongoId(), validateFields], deleteResultado);
 
